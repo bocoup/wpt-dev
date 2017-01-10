@@ -1,0 +1,3 @@
+#!/bin/bash
+
+{{playbook_dir}}/chromium-latest-linux/run.sh $*

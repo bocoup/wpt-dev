@@ -1,12 +1,6 @@
 ---
 # Source: Web Platform Test `README.md` file, "Running the Tests"
 # https://github.com/w3c/web-platform-tests/blob/dc3eba22286488a5acd2653763d8ce4b8c77f99c/README.md#running-the-tests
-- name: Install git
-  apt:
-    name: git
-    state: present
-  become: yes
-
 - name: Install OpenSSL
   apt:
     name: openssl

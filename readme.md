@@ -4,13 +4,14 @@ This project defines an [Ansible](https://www.ansible.com/) playbook for
 configuring a Unix-like system to contribute to [the Web Platform Test
 suite](https://github.com/w3c/web-platform-tests).
 
-Goals:
+Features:
 
-- Automated installation of the Web Platform Test suite itself
-  - Version control system (git at the time of this writing)
-  - Source code repository
-  - Relevant system configuration (e.g. host file modifications)
-- Automated installation of the development version for various browsers
+- the latest revision of the Web Platform Test suite is made available in the
+  current working directory
+- the command `chromium-latest` will be defined. This command will fetch the
+  latest version of the Linux x64 build of the Chromium browser and run it
+  (script courtesy [the "chromium-latest-linux"
+  project](https://github.com/scheib/chromium-latest-linux))
 
 ## Requirements
 

@@ -1,0 +1,20 @@
+---
+- name: Fetch the "chromium-latest-linux" project
+  git:
+    repo: git@github.com:scheib/chromium-latest-linux.git
+    dest: ./chromium-latest-linux
+
+- name: Install "run latest Chromium" script (`chromium-latest`)
+  template:
+    src: chromium-latest
+    dest: /usr/bin/chromium-latest
+    mode: 0755
+  become: true
+  register: install_chromium_latest
+
+# This task is performed once during initial provisioning. The user is expected
+# to update Chromium using the installed `chromium-latest-linux` project at an
+# interval of their choosing.
+- name: Fetch the latest build of Chromium
+  shell: ./chromium-latest-linux/update.sh
+  when: "{{install_chromium_latest.changed}}"
