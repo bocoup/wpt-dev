@@ -1,0 +1,43 @@
+---
+# Source: Web Platform Test `README.md` file, "Running the Tests"
+# https://github.com/w3c/web-platform-tests/blob/dc3eba22286488a5acd2653763d8ce4b8c77f99c/README.md#running-the-tests
+- name: Install git
+  apt:
+    name: git
+    state: present
+  become: yes
+
+- name: Install OpenSSL
+  apt:
+    name: openssl
+    state: present
+  become: yes
+
+- name: Download the Web Platform Tests source code
+  git:
+    repo: git@github.com:w3c/web-platform-tests.git
+    recursive: yes
+    accept_hostkey: yes
+    dest: ./web-platform-tests
+
+- name: Define required hostfile entries
+  lineinfile:
+    dest: /etc/hosts
+    regexp: "\\s{{item.name | regex_escape()}}"
+    line: "{{item.ip}}	{{item.name}} # Required by the Web Platform Test suite"
+  with_items:
+    - ip: 127.0.0.1
+      name: web-platform.test
+    - ip: 127.0.0.1
+      name: www.web-platform.test
+    - ip: 127.0.0.1
+      name: www1.web-platform.test
+    - ip: 127.0.0.1
+      name: www2.web-platform.test
+    - ip: 127.0.0.1
+      name: xn--n8j6ds53lwwkrqhv28a.web-platform.test
+    - ip: 127.0.0.1
+      name: xn--lve-6lad.web-platform.test
+    - ip: 0.0.0.0
+      name: nonexistent-origin.web-platform.test
+  become: yes

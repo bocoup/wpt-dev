@@ -19,6 +19,15 @@ A Unix-like system with the following software:
 - Python 2.7 ([installation instructions](https://wiki.python.org/moin/BeginnersGuide/Download))
 - Ansible ([installation instructions](https://docs.ansible.com/ansible/intro_installation.html))
 
+## Installation
+
+Run the following command from the root of this project:
+
+    ansible-playbook provision.yml
+
+This command will prompt for the system administrator's password because the
+installation procedure necessarily modifies system-level configuration.
+
 ## License
 
 Copyright 2016 Bocoup under [the GNU General Public License
