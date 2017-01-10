@@ -3,5 +3,6 @@
   gather_facts: no
   roles:
     - wpt
+    - directories
     - chromium
     - firefox

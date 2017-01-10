@@ -1,5 +1,4 @@
 /web-platform-tests/
 /*.retry
-/chromium-latest-linux/
-/firefox-*.tar.*
-/firefox
+/downloads/
+/tools/

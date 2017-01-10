@@ -1,0 +1,3 @@
+---
+download_dir: "{{playbook_dir}}/downloads"
+tools_dir: "{{playbook_dir}}/tools"

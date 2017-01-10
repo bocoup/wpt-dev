@@ -1,0 +1,8 @@
+---
+- name: Create target directories
+  file:
+    path: "{{item}}"
+    state: directory
+  with_items:
+    - "{{download_dir}}"
+    - "{{tools_dir}}"

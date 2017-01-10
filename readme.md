@@ -31,6 +31,12 @@ Run the following command from the root of this project:
 This command will prompt for the system administrator's password because the
 installation procedure necessarily modifies system-level configuration.
 
+Tooling will be installed into the local `tools/` directory by default. This
+location may be changed by specifying the `tools_dir` variable via Ansible's
+`--extra-vars` option, as in:
+
+    ansible-playbook --extra-vars "tools_dir=/opt/web-platform-tests" provision.yml
+
 ## License
 
 Copyright 2016 Bocoup under [the GNU General Public License

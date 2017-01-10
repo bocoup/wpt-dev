@@ -2,17 +2,17 @@
 - name: Fetch pre-compiled binary for "Linux x64" build of Firefox Nightly
   get_url:
     url: "{{firefox_download_url}}"
-    dest: "{{firefox_download_url | basename}}"
+    dest: "{{download_dir}}/{{firefox_download_url | basename}}"
 
 - name: Unpack Firefox Nightly
   unarchive:
-    src: "{{firefox_download_url | basename}}"
-    dest: "{{playbook_dir}}"
-    creates: firefox
+    src: "{{download_dir}}/{{firefox_download_url | basename}}"
+    dest: "{{tools_dir}}"
+    creates: "{{tools_dir}}/firefox"
 
 - name: Install Firefox Nightly
   file:
-    src: "{{playbook_dir}}/firefox/firefox"
+    src: "{{tools_dir}}/firefox/firefox"
     dest: /usr/bin/firefox-nightly
     state: link
   become: true
