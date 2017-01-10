@@ -1,0 +1,12 @@
+---
+- name: Fetch the "chromium-latest-linux" project
+  git:
+    repo: git@github.com:scheib/chromium-latest-linux.git
+    dest: ./chromium-latest-linux
+
+- name: Install "update and run Chromium" script (`chromium-latest`)
+  template:
+    src: chromium-latest
+    dest: /usr/bin/chromium-latest
+    mode: 0755
+  become: true
