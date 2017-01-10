@@ -12,6 +12,8 @@ Features:
   latest version of the Linux x64 build of the Chromium browser and run it
   (script courtesy [the "chromium-latest-linux"
   project](https://github.com/scheib/chromium-latest-linux))
+- Firefox Nightly will be installed and available via the `firefox-nightly`
+  command (this browser automatically receives updates from Mozilla)
 
 ## Requirements
 
