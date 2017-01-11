@@ -41,3 +41,22 @@
     - ip: 0.0.0.0
       name: nonexistent-origin.web-platform.test
   become: yes
+
+- name: Create font directory
+  file:
+    path: /usr/local/share/fonts/truetype/web-platform
+    state: directory
+    mode: 0775
+  become: yes
+
+- name: Download the Ahem font
+  get_url:
+    url: http://www.w3.org/Style/CSS/Test/Fonts/Ahem/AHEM____.TTF
+    dest: /usr/local/share/fonts/truetype/web-platform
+    mode: 0755
+  become: yes
+  register: download_ahem
+
+- name: Rebuild font cache
+  command: fc-cache
+  when: "{{download_ahem.changed}}"
