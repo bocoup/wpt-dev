@@ -3,6 +3,9 @@
   gather_facts: no
   roles:
     - wpt
+    - wptrunner
     - directories
     - chromium
     - firefox
+    - wptrunner-chromium
+    - wptrunner-firefox

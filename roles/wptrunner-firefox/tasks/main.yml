@@ -1,0 +1,21 @@
+---
+- name: Install Python requirements
+  shell: |
+    cd wptrunner &&
+    pip install --requirement requirements_firefox.txt
+  become: yes
+
+# gecko-dev is a very large project; the following git invocations are used in
+# order to limit the amount of data downloaded to the required sub-directory
+# and the required project history.
+- name: Fetch profile
+  shell: |
+    mkdir {{download_dir}}/gecko-dev && \
+    cd {{download_dir}}/gecko-dev && \
+    git init && \
+    git remote add origin git@github.com:mozilla/gecko-dev.git && \
+    git config core.sparsecheckout true && \
+    echo "testing/profiles/*" >> .git/info/sparse-checkout && \
+    git pull --depth=1 origin master
+  args:
+    creates: "{{download_dir}}/gecko-dev/testing/profiles/"

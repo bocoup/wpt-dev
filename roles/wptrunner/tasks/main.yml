@@ -1,0 +1,24 @@
+---
+- name: Install PIP
+  easy_install:
+    name: pip
+    state: present
+
+- name: Fetch project source
+  git:
+    repo: https://github.com/w3c/wptrunner.git
+    dest: ./wptrunner
+
+- name: Install dependencies
+  shell: |
+    cd wptrunner && \
+    pip install --editable ./
+  become: true
+
+- name: Create manifest file
+  shell: |
+    mkdir meta && \
+    cd web-platform-tests && \
+    python manifest --path ../meta/MANIFEST.json
+  args:
+    creates: meta/MANIFEST.json

@@ -1,0 +1,38 @@
+#!/bin/bash
+
+function help {
+  cat <<HELP
+Usage: $(basename $0) [PRODUCT] [WPTRUNNER ARGS...]
+A simple wrapper for the 'wptrunner' command, built to leverage the environment
+defined by the 'wpt-dev' project.
+
+The PRODUCT argument must be specified as one of:
+
+- chromium
+- firefox
+
+Any additional arguments will be forwarded to the 'wptrunner' script.
+HELP
+}
+
+if [ "$1" == "chromium" ]; then
+  product_args="--product chrome \
+    --binary $(which chromium-latest) \
+    --webdriver-binary downloads/chromedriver"
+elif [ "$1" == "firefox" ]; then
+  product_args="--product firefox \
+    --binary $(which firefox-nightly) \
+    --prefs-root downloads/gecko-dev/testing/profiles"
+elif [ "$1" == "--help" -o "$1" == "-h" ]; then
+  help
+  exit 0
+else
+  help >&2
+  exit 1
+fi
+
+wptrunner \
+  --certutil-binary openssl \
+  --tests ./web-platform-tests/ \
+  $product_args \
+  ${@:2}

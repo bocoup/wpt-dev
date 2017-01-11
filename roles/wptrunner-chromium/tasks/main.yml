@@ -1,0 +1,24 @@
+---
+- name: Find latest release version of "chromedriver"
+  get_url:
+    url: https://chromedriver.storage.googleapis.com/LATEST_RELEASE
+    dest: "{{download_dir}}/chromedriver-LATEST_RELEASE"
+  register: chromedriver_version
+
+- name: Fetch latest release of "chromedriver"
+  get_url:
+    url: https://chromedriver.storage.googleapis.com/{{lookup('file', chromedriver_version.dest)}}/chromedriver_linux64.zip
+    dest: "{{download_dir}}/chromedriver_linux64.zip"
+  when: chromedriver_version.changed
+
+- name: Unpack latest release of "chromedriver"
+  unarchive:
+    src: "{{download_dir}}/chromedriver_linux64.zip"
+    dest: "{{download_dir}}"
+    creates: "{{download_dir}}/chromedriver"
+
+- name: Install Python requirements
+  shell: |
+    cd wptrunner && \
+    pip install --requirement requirements_chrome.txt
+  become: yes
