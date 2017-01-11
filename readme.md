@@ -14,6 +14,8 @@ Features:
   project](https://github.com/scheib/chromium-latest-linux))
 - Firefox Nightly will be installed and available via the `firefox-nightly`
   command (this browser automatically receives updates from Mozilla)
+- the `wptrunner` project will installed (see the `runtests` script for a
+  simplified interface designed for the environment defined here)
 
 ## Requirements
 
