@@ -1,3 +1,3 @@
 #!/bin/bash
 
-{{playbook_dir}}/chromium-latest-linux/update-and-run.sh
+{{playbook_dir}}/chromium-latest-linux/run.sh

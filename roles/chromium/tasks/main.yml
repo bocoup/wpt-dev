@@ -4,7 +4,7 @@
     repo: git@github.com:scheib/chromium-latest-linux.git
     dest: ./chromium-latest-linux
 
-- name: Install "update and run Chromium" script (`chromium-latest`)
+- name: Install "run latest Chromium" script (`chromium-latest`)
   template:
     src: chromium-latest
     dest: /usr/bin/chromium-latest
