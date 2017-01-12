@@ -11,7 +11,7 @@ The PRODUCT argument must be specified as one of:
 - chromium
 - firefox
 
-All other arguments will be forwarded to the 'wptrunner' script.
+Any additional arguments will be forwarded to the 'wptrunner' script.
 HELP
 }
 
