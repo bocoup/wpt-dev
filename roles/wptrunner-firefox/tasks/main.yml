@@ -1,4 +1,15 @@
 ---
+- name: Fetch "geckodriver" at version 13
+  get_url:
+    url: https://github.com/mozilla/geckodriver/releases/download/v0.13.0/geckodriver-v0.13.0-linux64.tar.gz
+    dest: "{{download_dir}}/geckodriver-v0.13.0-linux64.tar.gz"
+
+- name: Unpack "geckodriver"
+  unarchive:
+    src: "{{download_dir}}//geckodriver-v0.13.0-linux64.tar.gz"
+    dest: "{{download_dir}}"
+    creates: "{{download_dir}}/geckodriver"
+
 - name: Install Python requirements
   shell: |
     cd wptrunner &&

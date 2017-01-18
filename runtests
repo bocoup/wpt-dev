@@ -22,7 +22,8 @@ if [ "$1" == "chromium" ]; then
 elif [ "$1" == "firefox" ]; then
   product_args="--product firefox \
     --binary $(which firefox-nightly) \
-    --prefs-root downloads/gecko-dev/testing/profiles"
+    --prefs-root downloads/gecko-dev/testing/profiles \
+    --webdriver-binary downloads/geckodriver"
 elif [ "$1" == "--help" -o "$1" == "-h" ]; then
   help
   exit 0
