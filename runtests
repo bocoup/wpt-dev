@@ -35,6 +35,6 @@ fi
 wptrunner \
   --certutil-binary openssl \
   --tests ./web-platform-tests/ \
-  --manifest ./web-platform-tests/MANIFEST.json \
+  --include-manifest ./web-platform-tests/MANIFEST.json \
   $product_args \
   ${@:2}
