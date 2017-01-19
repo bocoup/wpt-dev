@@ -19,6 +19,6 @@
   shell: |
     mkdir meta && \
     cd web-platform-tests && \
-    python manifest --path ../meta/MANIFEST.json
+    python manifest
   args:
-    creates: meta/MANIFEST.json
+    creates: web-platform-tests/MANIFEST.json
