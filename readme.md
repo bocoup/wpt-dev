@@ -4,6 +4,9 @@ This project defines an [Ansible](https://www.ansible.com/) playbook for
 configuring a Unix-like system to contribute to [the Web Platform Test
 suite](https://github.com/w3c/web-platform-tests).
 
+We maintain separate installation and invocation [instructions](windows.md) for
+running the test suite on Windows
+
 Features:
 
 - the latest revision of the Web Platform Test suite is made available in the
@@ -25,6 +28,7 @@ A Unix-like system with the following software:
 - Ansible ([installation instructions](https://docs.ansible.com/ansible/intro_installation.html))
 
 ## Installation
+
 
 Run the following command from the root of this project:
 
